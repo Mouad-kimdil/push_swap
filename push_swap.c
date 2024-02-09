@@ -3,12 +3,10 @@
 
 int main(int ac, char **av)
 {
-	if (ac < 4)
+	if (ac < 2)
 		return (printf("ko 1"), 0);
-	if (!check_is_number(av))
-		return (printf("ko 2"),0);
-	if (!is_double(ac, av))
-		return (printf("ko 3"), 0);
+	if (cheker(av) == 0)
+		return (printf("ko"), 0);
 	printf("ok");
 	return (0);
 }

@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "push_swap.h"
 
 long	ft_atoi(char *str)
 {
@@ -46,8 +47,97 @@ int	my_is_digit(char *str)
 	return (1);
 }
 
+int	count(char **av)
+{
+	int	i;
+	int	count;
+
+	i = 1;
+	count = 0;
+	while (av[i])
+	{
+		count += countword(av[i], ' ');
+		i++;
+	}
+	return (count);
+}
+
+void	fill_arr(char **av, int *arr)
+{
+	int		i;
+	int		j;
+	char	**final;
+
+	i = 1;
+	while (av[i])
+	{
+		j = i - 1;
+		final = ft_split(av[i], ' ');
+		while (final[j])
+		{
+			arr[j] = ft_atoi(final[j]);
+			j++;
+		}
+		i++;
+	}
+}
+
+int	*is_doublee(char **str)
+{
+	int	i;
+	int	j;
+	int	*arr;
+	int	len;
+
+	len = 0;
+	while (str[len])
+		len++;
+	arr = malloc(sizeof(int) * len + 1);
+	i = 0;
+	while (i < len)
+	{
+		arr[i] = ft_atoi(str[i]);
+		i++;
+	}
+	return (arr);
+}
+
 int main(int ac, char **av)
 {
-	int nb = my_is_digit(av[1]);
-	printf("%d\n", nb);
+	char *str[] = {"1", "2", "3", NULL};
+	int *arr = is_doublee(str);
+	int i = 0;
+	while (i < 9)
+	{
+		printf("%d ", arr[i]);
+		i++;
+	}
 }
+
+void	swap(int *a, int *b)
+{
+	int	temp;
+
+	temp = *a;
+	*a = *b;
+	*b = temp;
+}
+
+void	bubble_sort(int *arr, int size)
+{
+	int	i;
+
+	i = 1;
+	while (i < size)
+	{
+		if (arr[i - 1] > arr[i])
+		{
+			swap(&arr[i - 1], &arr[i]);
+			i = 0;
+		}
+		i++;
+	}
+}
+
+void	swap(int *a, int *b);
+void	bubble_sort(int *arr, int size);

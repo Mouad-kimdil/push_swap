@@ -62,62 +62,20 @@ int	check_is_number(char **av)
 	return (1);
 }
 
-int	is_double(int ac, char **av)
+int	cheker(char **av)
 {
-	int	*arr;
+	char	**arr;
 	int	i;
-	int	j;
 
-	
-	arr = malloc(sizeof(int) * ac + 1);
 	i = 1;
-	j = 0;
 	while (av[i])
 	{
-		arr[j] = ft_atoi(av[i]);
-		i++;
-		j++;
-	}
-	if (!check_doubles(arr, ac - 1))
-		return (free(arr), 0);
-	return (free(arr), 1);
-}
-
-void	swap(int *a, int *b)
-{
-	int	temp;
-
-	temp = *a;
-	*a = *b;
-	*b = temp;
-}
-
-void	bubble_sort(int *arr, int size)
-{
-	int	i;
-
-	i = 1;
-	while (i < size)
-	{
-		if (arr[i - 1] > arr[i])
-		{
-			swap(&arr[i - 1], &arr[i]);
-			i = 0;
-		}
-		i++;
-	}
-}
-
-int check_doubles(int *arr, int size)
-{
-	int	i;
-
-	bubble_sort(arr, size);
-	i = 1;
-	while (i < size)
-	{
-		if (arr[i - 1] == arr[i])
-			return (0);
+		arr = ft_split(av[i], ' ');
+		if (!check_is_number(arr))
+			return (free_arr(arr), 0);
+		if (!is_double(arr))
+			return (free_arr(arr), 0);
+		free_arr(arr);
 		i++;
 	}
 	return (1);
