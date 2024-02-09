@@ -43,20 +43,18 @@ int	is_double(char **str)
 {
 	int	*arr;
 	int	i;
-	int	len;
 	int	size;
 
-	len = 0;
-	while (str[len])
-		len++;
-	arr = malloc(sizeof(int) * len + 1);
+	size = 0;
+	while (str[size])
+		size++;
+	arr = malloc(sizeof(int) * size + 1);
 	i = 0;
-	while (i < len)
+	while (i < size)
 	{
 		arr[i] = ft_atoi(str[i]);
 		i++;
 	}
-	size = sizeof(arr) / 4;
 	bubble_sort(arr, size);
 	if (!check_doubles(arr, size))
 		return (free(arr), 0);
