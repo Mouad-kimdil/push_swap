@@ -17,9 +17,10 @@ long	ft_atoi(char *str)
 			sign *= -1;
 		i++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
+	while ((str[i] >= '0' && str[i] <= '9') || str[i] == ' ')
 	{
-		result = result * 10 + (str[i] - 48);
+		if (str[i] >= '0' && str[i] <= '9')
+			result = result * 10 + (str[i] - 48);
 		i++;
 	}
 	return (sign * result);
@@ -31,11 +32,13 @@ int	my_is_digit(char *str)
 	long	temp;
 
 	i = 0;
+	while (str[i] == ' ')
+		i++;
 	if ((str[i] == '-' || str[i] == '+') && str[i + 1])
 		i++;
 	while (str[i])
 	{
-		if (!(str[i] >= '0' && str[i] <= '9'))
+		if (!((str[i] >= '0' && str[i] <= '9') || str[i] == ' '))
 			return (0);
 		i++;
 	}
@@ -65,6 +68,7 @@ int	is_double(int ac, char **av)
 	int	i;
 	int	j;
 
+	
 	arr = malloc(sizeof(int) * ac + 1);
 	i = 1;
 	j = 0;
