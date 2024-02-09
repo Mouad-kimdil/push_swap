@@ -10,14 +10,16 @@ typedef struct s_list
 	struct  s_list	*next;
 }	t_list;
 
-int		cheker(char **av);
+int		cheker(int ac, char **av);
 int		my_is_digit(char *str);
 int		check_is_number(char **av);
 long	ft_atoi(char *str);
-int		is_double(char **str);
+int		is_double(int ac, char **av);
+int		*fill_arr(char **res, int *arr, int *idx);
 int		check_doubles(int *arr, int size);
 void	swap(int *a, int *b);
 void	bubble_sort(int *arr, int size);
+int		alloc_len(char **av);
 int		countword(char *s, char c);
 char	*ft_strndup(char *src, int n);
 void	ft_free(char **ptr, int i);

@@ -39,24 +39,54 @@ int check_doubles(int *arr, int size)
 	return (1);
 }
 
-int	is_double(char **str)
+int	alloc_len(char **av)
 {
-	int	*arr;
-	int	i;
-	int	size;
+	int	len;
+	int i;
 
-	size = 0;
-	while (str[size])
-		size++;
-	arr = malloc(sizeof(int) * size + 1);
-	i = 0;
-	while (i < size)
+	len = 0;
+	i = 1;
+	while (av[i])
 	{
-		arr[i] = ft_atoi(str[i]);
+		len += countword(av[i], ' ');
 		i++;
 	}
-	bubble_sort(arr, size);
-	if (!check_doubles(arr, size))
+	return (len);
+}
+
+int	*fill_arr(char **res, int *arr, int *idx)
+{
+	int	i;
+
+	i = 0;
+	while (res[i])
+	{
+		arr[*idx] = ft_atoi(res[i]);
+		i++;
+		*idx = *idx + 1;
+	}
+	return (arr);
+}
+
+int	is_double(int ac, char **av)
+{
+	int		*arr;
+	char	**res;
+	int		i;
+	int		idx;
+
+	i = 1;
+	arr = malloc(sizeof(int) * alloc_len(av) + 1);
+	idx = 0;
+	while (i < ac)
+	{
+		res = ft_split(av[i], ' ');
+		fill_arr(res, arr, &idx);
+		free_arr(res);
+		i++;
+	}
+	bubble_sort(arr, idx);
+	if (!check_doubles(arr, idx))
 		return (free(arr), 0);
 	return (free(arr), 1);
 }

@@ -104,14 +104,8 @@ int	*is_doublee(char **str)
 
 int main(int ac, char **av)
 {
-	char *str[] = {"1", "2", "3", NULL};
-	int *arr = is_doublee(str);
-	int i = 0;
-	while (i < 9)
-	{
-		printf("%d ", arr[i]);
-		i++;
-	}
+	char *str[] = {"21 1", "2", "3", NULL};
+	printf("%c\n", str[0][1]);
 }
 
 void	swap(int *a, int *b)
