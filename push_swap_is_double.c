@@ -54,20 +54,6 @@ int	alloc_len(char **av)
 	return (len);
 }
 
-int	*fill_arr(char **res, int *arr, int *idx)
-{
-	int	i;
-
-	i = 0;
-	while (res[i])
-	{
-		arr[*idx] = ft_atoi(res[i]);
-		i++;
-		*idx = *idx + 1;
-	}
-	return (arr);
-}
-
 int	is_double(int ac, char **av)
 {
 	int		*arr;

@@ -61,22 +61,3 @@ int	check_is_number(char **arr)
 	}
 	return (1);
 }
-
-int	cheker(int ac, char **av)
-{
-	char	**arr;
-	int		i;
-
-	i = 1;
-	while (av[i])
-	{
-		arr = ft_split(av[i], ' ');
-		if (!check_is_number(arr))
-			return (free_arr(arr), 0);
-		free_arr(arr);
-		i++;
-	}
-	if (!is_double(ac, av))
-			return (0);
-	return (1);
-}
