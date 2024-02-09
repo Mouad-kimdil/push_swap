@@ -38,7 +38,7 @@ int	my_is_digit(char *str)
 		i++;
 	while (str[i])
 	{
-		if (!((str[i] >= '0' && str[i] <= '9') || str[i] == ' '))
+		if (!(str[i] >= '0' && str[i] <= '9'))
 			return (0);
 		i++;
 	}
@@ -48,14 +48,14 @@ int	my_is_digit(char *str)
 	return (1);
 }
 
-int	check_is_number(char **av)
+int	check_is_number(char **arr)
 {
 	int	i;
 
-	i = 1;
-	while (av[i])
+	i = 0;
+	while (arr[i])
 	{
-		if (!my_is_digit(av[i]))
+		if (!my_is_digit(arr[i]))
 			return (0);
 		i++;
 	}

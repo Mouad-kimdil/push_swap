@@ -12,7 +12,7 @@ typedef struct s_list
 
 int		cheker(int ac, char **av);
 int		my_is_digit(char *str);
-int		check_is_number(char **av);
+int		check_is_number(char **arr);
 long	ft_atoi(char *str);
 int		is_double(int ac, char **av);
 int		*fill_arr(char **res, int *arr, int *idx);
