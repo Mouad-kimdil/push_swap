@@ -15,19 +15,19 @@ void	free_arr(char **arr)
 
 int	cheker(int ac, char **av)
 {
-	char	**arr;
+	char	**str;
 	int		i;
 
 	i = 1;
 	while (av[i])
 	{
-		arr = ft_split(av[i], ' ');
-		if (!check_is_number(arr))
-			return (free_arr(arr), 0);
-		free_arr(arr);
+		str = ft_split(av[i], ' ');
+		if (!check_is_number(str))
+			return (free_arr(str), 0);
+		free_arr(str);
 		i++;
 	}
-	if (!is_double(ac, av))
+	if (!is_double(ac, av) || !check_is_sorted(av + 1, alloc_len(av)))
 			return (0);
 	return (1);
 }

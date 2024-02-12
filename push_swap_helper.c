@@ -61,3 +61,45 @@ int	check_is_number(char **arr)
 	}
 	return (1);
 }
+
+int	is_sorted(int *arr, int size)
+{
+	int	i;
+
+	i = 1;
+	while (i < size)
+	{
+		if (arr[i - 1] > arr[i])
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+int	check_is_sorted(char **av, int size)
+{
+	int		i;
+	int		j;
+	int		*arr;
+	char	**res;
+
+	i = 0;
+	arr = malloc(sizeof(int) * size);
+	while (*av)
+	{
+		res = ft_split(*av, ' ');
+		j = 0;
+		while (res[j])
+		{
+			arr[i] = ft_atoi(res[j]);
+			free(res[j]);
+			j++;
+			i++;
+		}
+		av++;
+	}
+	free(res);
+	if(is_sorted(arr, size))
+		return (0);
+	return (1);
+}

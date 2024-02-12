@@ -31,5 +31,7 @@ void	lstadd_back(t_list **lst, t_list *new);
 void	lstadd_front(t_list **lst, t_list *new);
 int		lstsize(t_list	*head);
 void	free_arr(char **arr);
+int		check_is_sorted(char **av, int size);
+int		is_sorted(int *arr, int size);
 
 #endif
