@@ -1,4 +1,9 @@
-SRCS = push_swap.c push_swap_helper.c push_swap_err.c push_swap_is_double.c push_swap_lists.c split.c
+SRCS = push_swap.c push_swap_helper.c push_swap_err.c \
+		push_swap_is_double.c push_swap_lists.c split.c \
+		push_swap_init_stack.c push_swap_strings.c \
+		push_swap_instructions.c push_swap_instruction2.c \
+		push_swap_message.c
+		
 INC = push_swap.h
 NAME = push_swap
 CC = cc
