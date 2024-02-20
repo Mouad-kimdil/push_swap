@@ -13,7 +13,7 @@ void	free_arr(char **arr)
 	free(arr);
 }
 
-int	cheker(int ac, char **av)
+int	checker(int ac, char **av)
 {
 	char	**str;
 	int		i;
@@ -23,7 +23,7 @@ int	cheker(int ac, char **av)
 	{
 		str = ft_split(av[i], ' ');
 		if (!check_is_number(str))
-			return (free_arr(str), 0);
+			return (free_arr(str), printf("is not a number"), 0);
 		free_arr(str);
 		i++;
 	}

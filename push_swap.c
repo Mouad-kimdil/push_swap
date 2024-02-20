@@ -2,8 +2,7 @@
 
 int main(int ac, char **av)
 {
-	if (ac < 2 || cheker(ac, av) == 0)
-		return (0);
-	printf("ok");
-	return (0);
+	if (ac < 2 || !checker(ac, av))
+		return (printf("num of args less than 2 or checker"),0);
+	return (printf("all good"), 0);
 }

@@ -48,14 +48,14 @@ int	my_is_digit(char *str)
 	return (1);
 }
 
-int	check_is_number(char **arr)
+int	check_is_number(char **str)
 {
 	int	i;
 
 	i = 0;
-	while (arr[i])
+	while (str[i])
 	{
-		if (!my_is_digit(arr[i]))
+		if (!my_is_digit(str[i]))
 			return (0);
 		i++;
 	}
@@ -78,10 +78,10 @@ int	is_sorted(int *arr, int size)
 
 int	check_is_sorted(char **av, int size)
 {
-	int		i;
-	int		j;
 	int		*arr;
 	char	**res;
+	int		i;
+	int		j;
 
 	i = 0;
 	arr = malloc(sizeof(int) * size);
@@ -92,14 +92,13 @@ int	check_is_sorted(char **av, int size)
 		while (res[j])
 		{
 			arr[i] = ft_atoi(res[j]);
-			free(res[j]);
 			j++;
 			i++;
 		}
+		free_arr(res);
 		av++;
 	}
-	free(res);
 	if(is_sorted(arr, size))
-		return (0);
-	return (1);
+		return (free(arr), 0);
+	return (free(arr), 1);
 }

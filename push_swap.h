@@ -10,9 +10,9 @@ typedef struct s_list
 	struct  s_list	*next;
 }	t_list;
 
-int		cheker(int ac, char **av);
+int		checker(int ac, char **av);
 int		my_is_digit(char *str);
-int		check_is_number(char **arr);
+int		check_is_number(char **str);
 long	ft_atoi(char *str);
 int		is_double(int ac, char **av);
 int		*fill_arr(char **res, int *arr, int *idx);
