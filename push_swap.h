@@ -9,7 +9,7 @@ typedef struct s_list
 {
 	int				data;
 	int				idx;
-	struct  s_list	*next;
+	struct s_list	*next;
 }	t_list;
 
 int		checker(int ac, char **av);
@@ -35,7 +35,7 @@ int		lstsize(t_list	*head);
 void	free_arr(char **arr);
 int		check_is_sorted(char **av, int size);
 int		is_sorted(int *arr, int size);
-void	initialize_stack(t_list *stack, char **av);
+void	initialize_stack(t_list **stack, char **av);
 int		ft_strlen(char *str);
 char	*ft_strjoin(char *s1, char *s2);
 char	*ft_strdup(char *str);
@@ -43,13 +43,20 @@ char	*join_args(char **av);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putchar_fd(char c, int fd);
-int		swap_satck(t_list *stack);
-int		push_stack(t_list *stack_from, t_list *stack_to);
-int		push_stack(t_list *stack_from, t_list *stack_to);
-int		sa(t_list *stack_a);
-int		sb(t_list *stack_b);
-int		ss(t_list *stack_a, t_list *stack_b);
-int		pa(t_list *stack_a, t_list *stack_b);
-int		pb(t_list *stack_b, t_list *stack_a);
+int		swap_satck(t_list **stack);
+int		push_stack(t_list **stack_from, t_list **stack_to);
+int		rotate_stack(t_list **stack);
+int		reverse_rotate(t_list **stack);
+int		sa(t_list **stack_a);
+int		sb(t_list **stack_b);
+int		ss(t_list **stack_a, t_list **stack_b);
+int		pa(t_list **stack_b, t_list **stack_a);
+int		pb(t_list **stack_a, t_list **stack_b);
+int		ra(t_list **stack_a);
+int		rb(t_list **stack_b);
+int		rr(t_list **stack_a, t_list **stack_b);
+int		rra(t_list **stack_a);
+int		rrb(t_list **stack_b);
+int		rrr(t_list **stack_a, t_list **stack_b);
 
 #endif

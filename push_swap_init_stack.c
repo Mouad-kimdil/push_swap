@@ -6,7 +6,7 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 09:33:04 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/02/20 14:48:58 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/02/23 18:35:53 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,22 +30,27 @@ char	*join_args(char **av)
 	return (str);
 }
 
-void	initialize_stack(t_list *stack, char **av)
+void	initialize_stack(t_list **stack, char **av)
 {
 	int		i;
 	char	*str;
 	char	**res;
 	t_list	*new;
+	t_list	*last;
 
 	str = join_args(av);
 	res = ft_split(str, ' ');
-	printf("%s\n", str);
 	free(str);
+	last = lstlast(*stack);
 	i = 0;
 	while (res[i])
-	{
-		new = lstnew(ft_atoi(res[i]));
-		lstadd_back(&stack, new);
-		i++;
-	}
+    {
+        new = lstnew(ft_atoi(res[i]));
+        if (!*stack)
+            *stack = new;
+        else
+            last->next = new;
+        last = new;
+        i++;
+    }
 }

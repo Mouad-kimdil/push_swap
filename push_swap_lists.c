@@ -4,13 +4,9 @@ t_list	*lstlast(t_list *lst)
 {
 	if (!lst)
 		return (NULL);
-	while (lst)
-	{
-		if (lst->next == NULL)
-			return (lst);
+	while (lst->next)
 		lst = lst->next;
-	}
-	return (NULL);
+	return (lst);
 }
 
 void	lstadd_back(t_list **lst, t_list *new)
@@ -20,6 +16,11 @@ void	lstadd_back(t_list **lst, t_list *new)
 	if (!lst || !*lst)
 		return ;
 	last = lstlast(*lst);
+	if (!lst)
+	{
+		*lst = new;
+		return ;
+	}
 	last->next = new;
 }
 
