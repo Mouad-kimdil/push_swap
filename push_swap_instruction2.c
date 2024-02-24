@@ -6,7 +6,7 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 13:29:32 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/02/23 22:49:28 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/02/24 05:55:10 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	pa(t_list **stack_b, t_list **stack_a)
 {
 	if (push_stack(stack_b, stack_a))
 		return (1);
-	ft_putendl_fd("pb", 1);
+	ft_putendl_fd("pa", 1);
 	return (0);
 }
 

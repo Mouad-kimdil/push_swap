@@ -47,6 +47,10 @@ int		swap_satck(t_list **stack);
 int		push_stack(t_list **stack_from, t_list **stack_to);
 int		rotate_stack(t_list **stack);
 int		reverse_rotate(t_list **stack);
+int		check_min(t_list **stack);
+void	sort_three(t_list **stack);
+void	sort_four(t_list **stack_a, t_list **stack_b);
+void	sort_five(t_list **stack_a, t_list **stack_b);
 int		sa(t_list **stack_a);
 int		sb(t_list **stack_b);
 int		ss(t_list **stack_a, t_list **stack_b);
@@ -58,5 +62,5 @@ int		rr(t_list **stack_a, t_list **stack_b);
 int		rra(t_list **stack_a);
 int		rrb(t_list **stack_b);
 int		rrr(t_list **stack_a, t_list **stack_b);
-
+void	print_stack(t_list *stack, int state);
 #endif
