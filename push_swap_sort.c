@@ -6,7 +6,7 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 05:22:17 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/02/24 06:11:08 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/02/24 06:21:15 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@ void	sort_three(t_list **stack)
 
 	if (!*stack)
 		return ;
+	if (lstsize(*stack) == 2)
+	{
+		sa(stack);
+		return ;
+	}
 	curr = *stack;
 	if (curr->data > curr->next->data && curr->data > curr->next->next->data)
 		ra(stack);

@@ -34,7 +34,7 @@ int main(int ac, char **av)
 		sort_five(&stack_a, &stack_b);
 	else if (lstsize(stack_a) == 4)
 		sort_four(&stack_a, &stack_b);
-	if (lstsize(stack_a) == 3)
+	if (lstsize(stack_a) == 3 || lstsize(stack_a) == 2)
 		sort_three(&stack_a);
 	// print_stack(stack_a, 0);
 	return (0);
