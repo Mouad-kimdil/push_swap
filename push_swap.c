@@ -54,11 +54,11 @@ int main(int ac, char **av)
 		sort_four(&stack_a, &stack_b);
 	if (lstsize(stack_a) == 3 || lstsize(stack_a) == 2)
 		sort_three(&stack_a);
-	if (lstsize(stack_a) > 5)
-		sort(&stack_a, &stack_b);
-	print_stack(stack_a, 0);
-	print_stack(stack_b, 1);
-	indexing(&stack_a, av, ac);
-	print_index(stack_a, 0);
+	// if (lstsize(stack_a) > 5)
+	// 	sort(&stack_a, &stack_b);
+	// print_stack(stack_a, 0);
+	// print_stack(stack_b, 1);
+	// indexing(&stack_a, av, ac);
+	// print_index(stack_a, 0);
 	return (0);
 }

@@ -6,27 +6,11 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 13:29:32 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/02/25 01:09:25 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/02/25 18:56:39 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	push_stack(t_list **stack_from, t_list **stack_to)
-{
-	t_list	*curr;
-
-	if (lstsize(*stack_from) < 1)
-		return (1);
-	curr = *stack_from;
-	*stack_from = (*stack_from)->next;
-	curr->next = NULL;
-	if (!*stack_to || !*stack_from)
-		*stack_to = curr;
-	else
-		lstadd_front(stack_to, curr);
-    return (0);
-}
 
 int	rotate_stack(t_list **stack)
 {
@@ -39,6 +23,22 @@ int	rotate_stack(t_list **stack)
 	curr->next = NULL;
 	lstlast(*stack)->next = curr;
 	return (0);
+}
+
+int	push_stack(t_list **stack_from, t_list **stack_to)
+{
+    t_list	*curr;
+
+    if (lstsize(*stack_from) < 1)
+        return (1);
+    curr = *stack_from;
+    *stack_from = (*stack_from)->next;
+    curr->next = NULL;
+    if (!*stack_to)
+        *stack_to = curr;
+    else
+        lstadd_front(stack_to, curr);
+    return (0);
 }
 
 int	pa(t_list **stack_b, t_list **stack_a)
