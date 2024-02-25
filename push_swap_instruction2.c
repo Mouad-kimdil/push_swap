@@ -6,7 +6,7 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 13:29:32 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/02/24 05:55:10 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/02/25 01:09:25 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	push_stack(t_list **stack_from, t_list **stack_to)
 	curr = *stack_from;
 	*stack_from = (*stack_from)->next;
 	curr->next = NULL;
-	if (!*stack_to || !stack_to)
+	if (!*stack_to || !*stack_from)
 		*stack_to = curr;
 	else
 		lstadd_front(stack_to, curr);

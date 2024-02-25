@@ -19,6 +19,24 @@ void print_stack(t_list *stack, int state)
     printf("\n");
 }
 
+void print_index(t_list *stack, int state)
+{
+	if (state == 0)
+		printf("stack_a: ");
+	else if (state == 1)
+		printf("stack_b: ");
+    if (!stack)
+    {
+        printf("is empty\n");
+        return;
+    }
+    while (stack)
+    {
+        printf("%d ", stack->idx);
+        stack = stack->next;
+    }
+    printf("\n");
+}
 
 int main(int ac, char **av)
 {
@@ -36,7 +54,11 @@ int main(int ac, char **av)
 		sort_four(&stack_a, &stack_b);
 	if (lstsize(stack_a) == 3 || lstsize(stack_a) == 2)
 		sort_three(&stack_a);
-	// print_stack(stack_a, 0);
+	if (lstsize(stack_a) > 5)
+		sort(&stack_a, &stack_b);
+	print_stack(stack_a, 0);
+	print_stack(stack_b, 1);
+	indexing(&stack_a, av, ac);
+	print_index(stack_a, 0);
 	return (0);
-
 }

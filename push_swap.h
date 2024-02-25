@@ -9,6 +9,10 @@ typedef struct s_list
 {
 	int				data;
 	int				idx;
+	int				pos;
+	int				target_pos;
+	int				cost_a;
+	int				cost_b;
 	struct s_list	*next;
 }	t_list;
 
@@ -63,4 +67,12 @@ int		rra(t_list **stack_a);
 int		rrb(t_list **stack_b);
 int		rrr(t_list **stack_a, t_list **stack_b);
 void	print_stack(t_list *stack, int state);
+void	sort(t_list **stack_a, t_list **stack_b);
+void	handle_multiple_args(t_list **stack, char **av, int argc, int *arr);
+void	handle_single_arg(t_list **stack, char **av, char **numbers, int *arr);
+void	indexing(t_list **stack, char **av, int argc);
+void	indexing_help(int *arr, t_list **stack, int count);
+void	cost_sort(t_list **stack_a, t_list **stack_b);
+int		get_min(t_list **stack);
+
 #endif
