@@ -66,13 +66,21 @@ int		rr(t_list **stack_a, t_list **stack_b);
 int		rra(t_list **stack_a);
 int		rrb(t_list **stack_b);
 int		rrr(t_list **stack_a, t_list **stack_b);
-void	print_stack(t_list *stack, int state);
-void	sort(t_list **stack_a, t_list **stack_b);
 void	handle_multiple_args(t_list **stack, char **av, int argc, int *arr);
 void	handle_single_arg(t_list **stack, char **av, char **numbers, int *arr);
 void	indexing(t_list **stack, char **av, int argc);
 void	indexing_help(int *arr, t_list **stack, int count);
+void	sort(t_list **stack_a, t_list **stack_b, int ac, char **av);
+void	process_stack(t_list **stack_a, t_list **stack_b, int size);
 void	cost_sort(t_list **stack_a, t_list **stack_b);
-int		get_min(t_list **stack);
+void	positioning(t_list **stack_a, t_list **stack_b);
+void	calculate_target_a(t_list **stack_a, t_list **stack_b);
+void	calculate_target_b(t_list **stack_a, t_list **stack_b);
+void	calculate_cheapest(t_list **stack_a, t_list **stack_b);
+void	print_stack(t_list *stack, int state);
+void	print_index(t_list *stack, int state);
+void	print_pos(t_list *stack, int state);
+void	print_target(t_list *stack, int state);
+void	print_cost(t_list *stack, int state);
 
 #endif

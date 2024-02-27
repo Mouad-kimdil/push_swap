@@ -6,7 +6,7 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 04:35:36 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/02/25 05:14:36 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/02/25 19:26:55 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,19 +78,3 @@ void	indexing(t_list **stack, char **av, int argc)
 	else
 		handle_single_arg(stack, av, numbers, arr);
 }
-
-// void	sort(t_list **stack_a, t_list **stack_b)
-// {
-// 	t_list *curr;
-
-// 	if (!stack_a || !*stack_a)
-// 		return;
-// 	curr = *stack_a;
-// 	while (curr->next->next->next)
-// 	{
-// 		pb(stack_a, stack_b);
-// 		curr = *stack_a;
-// 	}
-// 	sort_three(stack_a);
-// 	cost_sort(stack_a, stack_b);
-// }
