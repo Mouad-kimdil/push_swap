@@ -6,56 +6,39 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 05:35:03 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/02/26 23:27:39 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/03/02 03:24:32 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	calculate_target_a(t_list **stack_a, t_list **stack_b)
+void calculate_target_b(t_list **stack_a, t_list **stack_b)
 {
-	t_list	*a;
-	t_list	*b;
-	int		target_position;
+    t_list *b;
+    t_list *a;
+    int next_biggest;
+    int pos;
 
-	a = *stack_a;
-	while (a)
-	{
-		b = *stack_b;
-		target_position = 0;
-		while (b)
-		{
-			if (b->data > a->data
-			&& (target_position == 0 || b->pos < target_position))
-				target_position = b->pos;
-			b = b->next;
-		}
-		a->target_pos = target_position;
-		a = a->next;
-	}
-}
-
-void	calculate_target_b(t_list **stack_a, t_list **stack_b)
-{
-	t_list	*b;
-	t_list	*a;
-	int		target_position;
-
-	b = *stack_b;
-	while (b)
-	{
-		a = *stack_a;
-		target_position = 0;
-		while (a)
-		{
-			if (a->data > b->data
-			&& (target_position == 0 || a->pos < target_position))
-				target_position = a->pos;
-			a = a->next;
-		}
-		b->target_pos = target_position;
-		b = b->next;
-	}
+    b = *stack_b;
+    while (b)
+    {
+        a = *stack_a;
+        next_biggest = 2147483647;
+        pos = 0;
+        int i = 0;
+        while (a)
+        {
+            if (a->data > b->data && a->data < next_biggest)
+            {
+                next_biggest = a->data;
+                pos = i;
+            }
+            a = a->next;
+            i++;
+        }
+        b->target_pos = pos;
+        b = b->next;
+    }
 }
 
 void	positioning(t_list **stack_a, t_list **stack_b)
@@ -79,52 +62,62 @@ void	positioning(t_list **stack_a, t_list **stack_b)
 	}
 }
 
-void	cost_sort(t_list **stack_a, t_list **stack_b)
+void	cost_sort(t_list **stack_a , t_list **stack_b)
 {
+    t_list *curr;
+
+    curr = *stack_b;
 	sort_three(stack_a);
-	positioning(stack_a, stack_b);
-	calculate_target_a(stack_a, stack_b);
-	calculate_target_b(stack_a, stack_b);
-	// calculate_cheapest(stack_a, stack_b);
+    while (curr)
+    {
+        positioning(stack_a, stack_b);
+        calculate_target_b(stack_a, stack_b);
+        if (curr->target_pos > lstsize(*stack_a) / 2)
+		{
+            while (curr->target_pos++ < lstsize(*stack_a))
+                rra(stack_a);
+		}
+        else
+        {
+			while (curr->target_pos-- > 0)
+        	    ra(stack_a);
+		}
+        pa(stack_b, stack_a);
+        curr = *stack_b;
+    }
 }
 
-void	process_stack(t_list **stack_a, t_list **stack_b, int size)
+int	find_max(t_list *stack_a)
 {
+	int		max;
 	t_list	*curr;
 
-	curr = *stack_a;
+	max = -2147483648;
+	curr = stack_a;
 	while (curr)
 	{
-		if (curr->idx > (size - 3) && lstsize(*stack_a) > 3)
-		{
-			ra(stack_a);
-			curr = *stack_a;
-		}
-		else if (lstsize(*stack_a) > 3)
-		{
-			pb(stack_a, stack_b);
-			curr = *stack_a;
-		}
+		if (curr->data > max)
+			max = curr->data;
 		curr = curr->next;
 	}
-	cost_sort(stack_a, stack_b);
+	return (max);
 }
 
-void	sort(t_list **stack_a, t_list **stack_b, int ac, char **av)
+void sort(t_list **stack_a, t_list **stack_b)
 {
-	int		size;
-	char	**numbers;
+	int max;
+	t_list *curr;
 
-	if (!stack_a || !*stack_a)
-		return ;
-	size = 0;
-	if (ac < 2)
+	max = find_max(*stack_a);
+	while (lstsize(*stack_a) > 3)
 	{
-		numbers = ft_split(av[1], ' ');
-		while (numbers[size])
-			size++;
+		curr = *stack_a;
+		if (curr->data == max)
+		{
+			ra(stack_a);
+			continue ;
+		}
+		pb(stack_a, stack_b);
 	}
-	else
-		size = ac - 1;
-	process_stack(stack_a, stack_b, size);
+	cost_sort(stack_a, stack_b);
 }

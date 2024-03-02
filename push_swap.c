@@ -6,7 +6,7 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 23:17:58 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/02/26 23:40:55 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/03/02 03:31:34 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,17 @@ void	print_cost(t_list *stack, int state)
 	printf("\n");
 }
 
+int final_sort(t_list *stack_a)
+{
+    while (stack_a && stack_a->next)
+    {
+        if (stack_a->data > stack_a->next->data)
+            return 0;
+        stack_a = stack_a->next;
+    }
+    return 1;
+}
+
 int main(int ac, char **av)
 {
 	t_list	*stack_a;
@@ -128,37 +139,15 @@ int main(int ac, char **av)
 	stack_a = NULL;
 	stack_b = NULL;
 	initialize_stack(&stack_a, av);
-	indexing(&stack_a, av, ac);
-	// print_index(stack_a, 0);
-	// if (lstsize(stack_a) == 5)
-	// 	sort_five(&stack_a, &stack_b);
-	// else if (lstsize(stack_a) == 4)
-	// 	sort_four(&stack_a, &stack_b);
-	// if (lstsize(stack_a) == 3 || lstsize(stack_a) == 2)
-	// 	sort_three(&stack_a);
-	// if (lstsize(stack_a) > 5)
-	// 	sort(&stack_a, &stack_b, ac, av);
-	// print_stack(stack_a, 0);
-	// print_index(stack_a, 0);
-	// print_pos(stack_a, 0);
-	// print_target(stack_a, 0);
-	// print_stack(stack_b, 1);
-	// print_index(stack_b, 1);
-	// print_pos(stack_b, 1);
-	// print_target(stack_b, 1);
-
-	print_stack(stack_a, 0);
-	pb(&stack_a, &stack_b);
-	pb(&stack_a, &stack_b);
-	pb(&stack_a, &stack_b);
-	pb(&stack_a, &stack_b);
-	pb(&stack_a, &stack_b);
-	print_stack(stack_b, 1);
-	rrb(&stack_b);
-	print_stack(stack_b, 1);
-	print_stack(stack_a, 0);
-	pa(&stack_b, &stack_a);
-	print_stack(stack_b, 1);
-	print_stack(stack_a, 0);
+	if (lstsize(stack_a) == 5)
+		sort_five(&stack_a, &stack_b);
+	else if (lstsize(stack_a) == 4)
+		sort_four(&stack_a, &stack_b);
+	if (lstsize(stack_a) == 3 || lstsize(stack_a) == 2)
+		sort_three(&stack_a);
+	if (lstsize(stack_a) > 5)
+		sort(&stack_a, &stack_b);
+	while (!final_sort(stack_a))
+		rra(&stack_a);
 	return (0);
 }
