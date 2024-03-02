@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap_is_double.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/02 22:09:46 by mkimdil           #+#    #+#             */
+/*   Updated: 2024/03/02 22:09:46 by mkimdil          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	swap(int *a, int *b)
@@ -25,7 +37,7 @@ void	bubble_sort(int *arr, int size)
 	}
 }
 
-int check_doubles(int *arr, int size)
+int	check_doubles(int *arr, int size)
 {
 	int	i;
 
@@ -42,7 +54,7 @@ int check_doubles(int *arr, int size)
 int	alloc_len(char **av)
 {
 	int	len;
-	int i;
+	int	i;
 
 	len = 0;
 	i = 1;

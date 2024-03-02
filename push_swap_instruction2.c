@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/20 13:29:32 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/02/25 18:56:39 by mkimdil          ###   ########.fr       */
+/*   Created: 2024/03/02 22:08:36 by mkimdil           #+#    #+#             */
+/*   Updated: 2024/03/02 22:08:53 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,18 @@ int	rotate_stack(t_list **stack)
 
 int	push_stack(t_list **stack_from, t_list **stack_to)
 {
-    t_list	*curr;
+	t_list	*curr;
 
-    if (lstsize(*stack_from) < 1)
-        return (1);
-    curr = *stack_from;
-    *stack_from = (*stack_from)->next;
-    curr->next = NULL;
-    if (!*stack_to)
-        *stack_to = curr;
-    else
-        lstadd_front(stack_to, curr);
-    return (0);
+	if (lstsize(*stack_from) < 1)
+		return (1);
+	curr = *stack_from;
+	*stack_from = (*stack_from)->next;
+	curr->next = NULL;
+	if (!*stack_to)
+		*stack_to = curr;
+	else
+		lstadd_front(stack_to, curr);
+	return (0);
 }
 
 int	pa(t_list **stack_b, t_list **stack_a)
@@ -62,13 +62,5 @@ int	ra(t_list **stack_a)
 	if (rotate_stack(stack_a))
 		return (1);
 	ft_putendl_fd("ra", 1);
-	return (0);
-}
-
-int	rb(t_list **stack_b)
-{
-	if (rotate_stack(stack_b))
-		return (1);
-	ft_putendl_fd("rb", 1);
 	return (0);
 }

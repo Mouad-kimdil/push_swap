@@ -6,7 +6,7 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 20:45:48 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/02/23 22:25:28 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/03/02 22:09:29 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 
 int	reverse_rotate(t_list **stack)
 {
-	t_list *b_last = NULL;
-	t_list *last;
-	t_list *curr;
+	t_list	*b_last;
+	t_list	*last;
+	t_list	*curr;
 
+	b_last = NULL;
 	if (lstsize(*stack) < 2)
 		return (1);
 	curr = *stack;

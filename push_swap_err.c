@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap_err.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/02 22:05:26 by mkimdil           #+#    #+#             */
+/*   Updated: 2024/03/02 22:05:26 by mkimdil          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	free_arr(char **arr)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (arr[i])
@@ -23,12 +35,12 @@ int	checker(int ac, char **av)
 	{
 		str = ft_split(av[i], ' ');
 		if (!check_is_number(str))
-			return (free_arr(str),ft_putendl_fd("Error", 2), 0);
+			return (free_arr(str), ft_putendl_fd("Error", 2), 0);
 		free_arr(str);
 		i++;
 	}
 	if (!is_double(ac, av))
-			return (ft_putendl_fd("Error", 2), 0);
+		return (ft_putendl_fd("Error", 2), 0);
 	if (!check_is_sorted(av + 1, alloc_len(av)))
 		return (0);
 	return (1);

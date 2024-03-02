@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap_helper.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/02 22:06:20 by mkimdil           #+#    #+#             */
+/*   Updated: 2024/03/02 22:06:21 by mkimdil          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 long	ft_atoi(char *str)
@@ -98,7 +110,7 @@ int	check_is_sorted(char **av, int size)
 		free_arr(res);
 		av++;
 	}
-	if(is_sorted(arr, size))
+	if (is_sorted(arr, size))
 		return (free(arr), 0);
 	return (free(arr), 1);
 }

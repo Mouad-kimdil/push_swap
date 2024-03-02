@@ -6,7 +6,7 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 04:35:36 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/02/25 19:26:55 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/03/02 22:07:44 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	indexing_help(int *arr, t_list **stack, int count)
 {
-	t_list *curr;
-	int i;
+	t_list	*curr;
+	int		i;
 
 	curr = *stack;
 	while (curr)
@@ -26,7 +26,7 @@ void	indexing_help(int *arr, t_list **stack, int count)
 			if (curr->data == arr[i])
 			{
 				curr->idx = i + 1;
-				break;
+				break ;
 			}
 			i++;
 		}
@@ -36,7 +36,7 @@ void	indexing_help(int *arr, t_list **stack, int count)
 
 void	handle_multiple_args(t_list **stack, char **av, int argc, int *arr)
 {
-	int i;
+	int	i;
 
 	arr = malloc(sizeof(int) * (argc - 1));
 	i = 0;
@@ -49,10 +49,11 @@ void	handle_multiple_args(t_list **stack, char **av, int argc, int *arr)
 
 void	handle_single_arg(t_list **stack, char **av, char **numbers, int *arr)
 {
-	int i;
-	int count = 0;
+	int	i;
+	int	count;
 
 	numbers = ft_split(av[1], ' ');
+	count = 0;
 	while (numbers[count])
 		count++;
 	arr = malloc(sizeof(int) * count);
@@ -70,9 +71,11 @@ void	handle_single_arg(t_list **stack, char **av, char **numbers, int *arr)
 
 void	indexing(t_list **stack, char **av, int argc)
 {
-	int		*arr = NULL;
-	char	**numbers = NULL;
+	int		*arr;
+	char	**numbers;
 
+	arr = NULL;
+	numbers = NULL;
 	if (argc > 2)
 		handle_multiple_args(stack, av, argc, arr);
 	else

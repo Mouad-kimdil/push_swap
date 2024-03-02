@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/02 22:03:41 by mkimdil           #+#    #+#             */
+/*   Updated: 2024/03/02 22:04:09 by mkimdil          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
@@ -66,15 +78,13 @@ int		rr(t_list **stack_a, t_list **stack_b);
 int		rra(t_list **stack_a);
 int		rrb(t_list **stack_b);
 int		rrr(t_list **stack_a, t_list **stack_b);
-void	handle_multiple_args(t_list **stack, char **av, int argc, int *arr);
-void	handle_single_arg(t_list **stack, char **av, char **numbers, int *arr);
-void	indexing(t_list **stack, char **av, int argc);
-void	indexing_help(int *arr, t_list **stack, int count);
 void	sort(t_list **stack_a, t_list **stack_b);
 void	cost_sort(t_list **stack_a, t_list **stack_b);
 void	positioning(t_list **stack_a, t_list **stack_b);
 void	calculate_target_b(t_list **stack_a, t_list **stack_b);
 int		find_max(t_list *stack_a);
+int		pre_final_sort(t_list *stack_a);
+int		final_sort(t_list **stack_a);
 void	print_stack(t_list *stack, int state);
 void	print_index(t_list *stack, int state);
 void	print_pos(t_list *stack, int state);

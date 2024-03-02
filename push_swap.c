@@ -6,7 +6,7 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 23:17:58 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/03/02 03:31:34 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/03/02 22:03:37 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,68 +21,11 @@ void	print_stack(t_list *stack, int state)
 	if (!stack)
 	{
 		printf("is empty\n");
-		return;
+		return ;
 	}
 	while (stack)
 	{
 		printf("%d ", stack->data);
-		stack = stack->next;
-	}
-	printf("\n");
-}
-
-void	print_index(t_list *stack, int state)
-{
-	if (state == 0)
-		printf("index_a: ");
-	else if (state == 1)
-		printf("index_b: ");
-	if (!stack)
-	{
-		printf("is empty\n");
-		return;
-	}
-	while (stack)
-	{
-		printf("%d ", stack->idx);
-		stack = stack->next;
-	}
-	printf("\n");
-}
-
-void	print_pos(t_list *stack, int state)
-{
-	if (state == 0)
-		printf("pos_a: ");
-	else if (state == 1)
-		printf("pos_b: ");
-	if (!stack)
-	{
-		printf("is empty\n");
-		return;
-	}
-	while (stack)
-	{
-		printf("%d ", stack->pos);
-		stack = stack->next;
-	}
-	printf("\n");
-}
-
-void	print_target(t_list *stack, int state)
-{
-	if (state == 0)
-		printf("target_a: ");
-	else if (state == 1)
-		printf("target_b: ");
-	if (!stack)
-	{
-		printf("is empty\n");
-		return;
-	}
-	while (stack)
-	{
-		printf("%d ", stack->target_pos);
 		stack = stack->next;
 	}
 	printf("\n");
@@ -94,17 +37,12 @@ void	print_cost(t_list *stack, int state)
 		printf("cost_a: ");
 	else if (state == 1)
 		printf("cost_b: ");
-	if (!stack)
-	{
-		printf("is empty\n");
-		return;
-	}
 	if (state == 0)
 	{
 		while (stack)
 		{
 			printf("%d ", stack->cost_a);
-			stack = stack->next;	
+			stack = stack->next;
 		}
 	}
 	else if (state == 1)
@@ -112,24 +50,46 @@ void	print_cost(t_list *stack, int state)
 		while (stack)
 		{
 			printf("%d ", stack->cost_b);
-			stack = stack->next;	
+			stack = stack->next;
 		}
 	}
 	printf("\n");
 }
 
-int final_sort(t_list *stack_a)
+int	pre_final_sort(t_list *stack_a)
 {
-    while (stack_a && stack_a->next)
-    {
-        if (stack_a->data > stack_a->next->data)
-            return 0;
-        stack_a = stack_a->next;
-    }
-    return 1;
+	while (stack_a && stack_a->next)
+	{
+		if (stack_a->data > stack_a->next->data)
+			return (0);
+		stack_a = stack_a->next;
+	}
+	return (1);
 }
 
-int main(int ac, char **av)
+int	final_sort(t_list **stack_a)
+{
+	t_list	*curr;
+	int		max;
+	int		i;
+
+	max = find_max(*stack_a);
+	i = 0;
+	curr = *stack_a;
+	while (curr)
+	{
+		if (curr->data == max)
+			break ;
+		curr = curr->next;
+		i++;
+	}
+	if (i < lstsize(*stack_a))
+		return (1);
+	else
+		return (0);
+}
+
+int	main(int ac, char **av)
 {
 	t_list	*stack_a;
 	t_list	*stack_b;
@@ -147,7 +107,12 @@ int main(int ac, char **av)
 		sort_three(&stack_a);
 	if (lstsize(stack_a) > 5)
 		sort(&stack_a, &stack_b);
-	while (!final_sort(stack_a))
-		rra(&stack_a);
+	while (!pre_final_sort(stack_a))
+	{
+		if (final_sort(&stack_a) == 1)
+			ra(&stack_a);
+		else
+			rra(&stack_a);
+	}
 	return (0);
 }

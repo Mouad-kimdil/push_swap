@@ -6,7 +6,7 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 11:13:37 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/02/23 20:46:57 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/03/02 22:09:06 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,13 @@ int	ss(t_list **stack_a, t_list **stack_b)
 	if (swap_satck(stack_a) || swap_satck(stack_b))
 		return (1);
 	ft_putendl_fd("ss", 1);
+	return (0);
+}
+
+int	rb(t_list **stack_b)
+{
+	if (rotate_stack(stack_b))
+		return (1);
+	ft_putendl_fd("rb", 1);
 	return (0);
 }

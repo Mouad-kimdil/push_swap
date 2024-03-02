@@ -6,7 +6,7 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 09:33:04 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/02/23 18:35:53 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/03/02 22:08:07 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,13 @@ void	initialize_stack(t_list **stack, char **av)
 	last = lstlast(*stack);
 	i = 0;
 	while (res[i])
-    {
-        new = lstnew(ft_atoi(res[i]));
-        if (!*stack)
-            *stack = new;
-        else
-            last->next = new;
-        last = new;
-        i++;
-    }
+	{
+		new = lstnew(ft_atoi(res[i]));
+		if (!*stack)
+			*stack = new;
+		else
+			last->next = new;
+		last = new;
+		i++;
+	}
 }
