@@ -6,7 +6,7 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 22:03:41 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/03/02 22:04:09 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/03/02 22:19:32 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,9 +86,6 @@ int		find_max(t_list *stack_a);
 int		pre_final_sort(t_list *stack_a);
 int		final_sort(t_list **stack_a);
 void	print_stack(t_list *stack, int state);
-void	print_index(t_list *stack, int state);
-void	print_pos(t_list *stack, int state);
-void	print_target(t_list *stack, int state);
 void	print_cost(t_list *stack, int state);
 
 #endif
