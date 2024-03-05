@@ -6,7 +6,7 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 22:03:41 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/03/02 22:19:32 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/03/05 22:15:16 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <limits.h>
 
 typedef struct s_list
 {
@@ -63,10 +64,7 @@ int		swap_satck(t_list **stack);
 int		push_stack(t_list **stack_from, t_list **stack_to);
 int		rotate_stack(t_list **stack);
 int		reverse_rotate(t_list **stack);
-int		check_min(t_list **stack);
 void	sort_three(t_list **stack);
-void	sort_four(t_list **stack_a, t_list **stack_b);
-void	sort_five(t_list **stack_a, t_list **stack_b);
 int		sa(t_list **stack_a);
 int		sb(t_list **stack_b);
 int		ss(t_list **stack_a, t_list **stack_b);
@@ -81,11 +79,21 @@ int		rrr(t_list **stack_a, t_list **stack_b);
 void	sort(t_list **stack_a, t_list **stack_b);
 void	cost_sort(t_list **stack_a, t_list **stack_b);
 void	positioning(t_list **stack_a, t_list **stack_b);
-void	calculate_target_b(t_list **stack_a, t_list **stack_b);
 int		find_max(t_list *stack_a);
 int		pre_final_sort(t_list *stack_a);
 int		final_sort(t_list **stack_a);
 void	print_stack(t_list *stack, int state);
 void	print_cost(t_list *stack, int state);
+void	get_target_position(t_list **a, t_list **b);
+int		calculate_target_b(t_list **a, int b_idx, int target_idx, int target_pos);
+void	get_position(t_list **stack);
+void	calculate_costs(t_list **stack_a, t_list **stack_b);
+void	do_cheapest_move(t_list **stack_a, t_list **stack_b);
+void	do_move(t_list **stack_a, t_list **stack_b, int cost_a, int cost_b);
+void	rotate_b(t_list **b, int *cost);
+void	rotate_a(t_list **a, int *cost);
+void	rotate_both(t_list **a, t_list **b, int *cost_a, int *cost_b);
+void	reverse_rotate_both(t_list **a, t_list **b, int *cost_a, int *cost_b);
+int		ft_abs(int n);
 
 #endif

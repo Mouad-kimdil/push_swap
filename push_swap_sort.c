@@ -6,7 +6,7 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 05:22:17 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/02/24 06:21:15 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/03/05 22:13:45 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,82 +33,65 @@ void	sort_three(t_list **stack)
 		sa(stack);
 }
 
-int	check_min(t_list **stack)
+void	calculate_costs(t_list **stack_a, t_list **stack_b)
 {
-	t_list	*curr;
-	int		min_index;
-	int		current_index;
-	int		min_value;
+	t_list	*curr_a;
+	t_list	*curr_b;
+	int		size_a;
+	int		size_b;
 
-	curr = *stack;
-	if (!curr)
-		return (0);
-	min_index = 0;
-	current_index = 0;
-	min_value = curr->data;
-	while (curr)
+	curr_a = *stack_a;
+	curr_b = *stack_b;
+	size_a = lstsize(curr_a);
+	size_b = lstsize(curr_b);
+	while (curr_b)
 	{
-		if (curr->data < min_value)
-		{
-			min_value = curr->data;
-			min_index = current_index;
-		}
-		current_index++;
-		curr = curr->next;
+		curr_b->cost_b = curr_b->pos;
+		if (curr_b->pos > size_b / 2)
+			curr_b->cost_b = (size_b - curr_b->pos) * -1;
+		curr_b->cost_a = curr_b->target_pos;
+		if (curr_b->target_pos > size_a / 2)
+			curr_b->cost_a = (size_a - curr_b->target_pos) * -1;
+		curr_b = curr_b->next;
 	}
-	return (min_index);
 }
 
-void	sort_four(t_list **stack_a, t_list **stack_b)
+void	do_move(t_list **stack_a, t_list **stack_b, int cost_a, int cost_b)
 {
-	t_list	*curr;
-	int		i;
-
-	if (!*stack_a)
-		return ;
-	curr = *stack_a;
-	i = check_min(stack_a);
-	if (i < 2)
-	{
-		while (i--)
-			ra(stack_a);
-	}
-	else if (i >= 2)
-	{
-		while (i < 4)
-		{
-			rra(stack_a);
-			i++;
-		}
-	}
-	pb(stack_a, stack_b);
-	sort_three(stack_a);
+	if (cost_a < 0 && cost_b < 0)
+		reverse_rotate_both(stack_a, stack_b, &cost_a, &cost_b);
+	else if (cost_a > 0 && cost_b > 0)
+		rotate_both(stack_a, stack_b, &cost_a, &cost_b);
+	rotate_a(stack_a, &cost_a);
+	rotate_b(stack_b, &cost_b);
 	pa(stack_b, stack_a);
 }
 
-void	sort_five(t_list **stack_a, t_list **stack_b)
+void	do_cheapest_move(t_list **stack_a, t_list **stack_b)
 {
-	t_list	*curr;
-	int		i;
+	t_list	*tmp;
+	int		cheapest;
+	int		cost_a;
+	int		cost_b;
 
-	if (!*stack_a)
-		return ;
-	curr = *stack_a;
-	i = check_min(stack_a);
-	if (i < 2)
+	tmp = *stack_b;
+	cheapest = INT_MAX;
+	while (tmp)
 	{
-		while (i--)
-			ra(stack_a);
-	}
-	else if (i >= 2)
-	{
-		while (i < 5)
+		if (ft_abs(tmp->cost_a) + ft_abs(tmp->cost_b) < ft_abs(cheapest))
 		{
-			rra(stack_a);
-			i++;
+			cheapest = ft_abs(tmp->cost_b) + ft_abs(tmp->cost_a);
+			cost_a = tmp->cost_a;
+			cost_b = tmp->cost_b;
 		}
+		tmp = tmp->next;
 	}
-	pb(stack_a, stack_b);
-	sort_four(stack_a, stack_b);
-	pa(stack_b, stack_a);
+	do_move(stack_a, stack_b, cost_a, cost_b);
+}
+
+int	ft_abs(int n)
+{
+	if (n < 0)
+		return (n * -1);
+	return (n);
 }

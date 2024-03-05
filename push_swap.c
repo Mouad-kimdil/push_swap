@@ -6,7 +6,7 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 23:17:58 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/03/02 22:03:37 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/03/05 22:15:07 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,10 +99,6 @@ int	main(int ac, char **av)
 	stack_a = NULL;
 	stack_b = NULL;
 	initialize_stack(&stack_a, av);
-	if (lstsize(stack_a) == 5)
-		sort_five(&stack_a, &stack_b);
-	else if (lstsize(stack_a) == 4)
-		sort_four(&stack_a, &stack_b);
 	if (lstsize(stack_a) == 3 || lstsize(stack_a) == 2)
 		sort_three(&stack_a);
 	if (lstsize(stack_a) > 5)

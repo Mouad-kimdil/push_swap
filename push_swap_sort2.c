@@ -6,40 +6,39 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 05:35:03 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/03/02 22:00:45 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/03/05 22:14:41 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	calculate_target_b(t_list **stack_a, t_list **stack_b)
+int	calculate_target_b(t_list **a, int b_idx, int target_idx, int target_pos)
 {
-	t_list	*b;
-	t_list	*a;
-	int		next_biggest;
-	int		pos;
-	int		i;
+	t_list	*tmp_a;
 
-	b = *stack_b;
-	while (b)
+	tmp_a = *a;
+	while (tmp_a)
 	{
-		a = *stack_a;
-		next_biggest = 2147483647;
-		pos = 0;
-		i = 0;
-		while (a)
+		if (tmp_a->idx > b_idx && tmp_a->idx < target_idx)
 		{
-			if (a->data > b->data && a->data < next_biggest)
-			{
-				next_biggest = a->data;
-				pos = i;
-			}
-			a = a->next;
-			i++;
+			target_idx = tmp_a->idx;
+			target_pos = tmp_a->pos;
 		}
-		b->target_pos = pos;
-		b = b->next;
+		tmp_a = tmp_a->next;
 	}
+	if (target_idx != INT_MAX)
+		return (target_pos);
+	tmp_a = *a;
+	while (tmp_a)
+	{
+		if (tmp_a->idx < target_idx)
+		{
+			target_idx = tmp_a->idx;
+			target_pos = tmp_a->pos;
+		}
+		tmp_a = tmp_a->next;
+	}
+	return (target_pos);
 }
 
 void	positioning(t_list **stack_a, t_list **stack_b)
@@ -65,26 +64,12 @@ void	positioning(t_list **stack_a, t_list **stack_b)
 
 void	cost_sort(t_list **stack_a, t_list **stack_b)
 {
-	t_list	*curr;
-
-	curr = *stack_b;
 	sort_three(stack_a);
-	while (curr)
+	while (*stack_b)
 	{
-		positioning(stack_a, stack_b);
-		calculate_target_b(stack_a, stack_b);
-		if (curr->target_pos > lstsize(*stack_a) / 2)
-		{
-			while (curr->target_pos++ < lstsize(*stack_a))
-				rra(stack_a);
-		}
-		else
-		{
-			while (curr->target_pos-- > 0)
-				ra(stack_a);
-		}
-		pa(stack_b, stack_a);
-		curr = *stack_b;
+		get_target_position(stack_a, stack_b);
+		calculate_costs(stack_a, stack_b);
+		do_cheapest_move(stack_a, stack_b);
 	}
 }
 
