@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aboukdid <aboukdid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 22:03:41 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/03/05 22:15:16 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/03/05 22:39:47 by aboukdid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,8 @@ int		final_sort(t_list **stack_a);
 void	print_stack(t_list *stack, int state);
 void	print_cost(t_list *stack, int state);
 void	get_target_position(t_list **a, t_list **b);
-int		calculate_target_b(t_list **a, int b_idx, int target_idx, int target_pos);
+int		calculate_target_b(t_list **a, int b_idx,
+			int target_idx, int target_pos);
 void	get_position(t_list **stack);
 void	calculate_costs(t_list **stack_a, t_list **stack_b);
 void	do_cheapest_move(t_list **stack_a, t_list **stack_b);
