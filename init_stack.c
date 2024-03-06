@@ -6,7 +6,7 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 05:01:17 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/03/06 08:18:55 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/03/06 08:41:43 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ char	*join_args(char **av)
 	{
 		temp = ft_strjoin(av[i], " ");
 		str = ft_strjoin(str, temp);
+		free(temp);
 		i++;
 	}
 	str[ft_strlen(str) - 1] = '\0';
@@ -48,6 +49,7 @@ t_list	*initialize_stack(int ac, char **av)
 		while (tokens[++j] != NULL)
 		{
 			nb = ft_atoi(tokens[j]);
+			free(tokens[j]);
 			if (stack_a == NULL)
 				stack_a = lstnew((int)nb);
 			else

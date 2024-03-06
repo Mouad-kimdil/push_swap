@@ -25,6 +25,21 @@ void	free_arr(char **arr)
 	free(arr);
 }
 
+void	free_stack(t_list **stack)
+{
+	t_list	*tmp;
+
+	if (!stack || !(*stack))
+		return ;
+	while (*stack)
+	{
+		tmp = (*stack)->next;
+		free(*stack);
+		*stack = tmp;
+	}
+	*stack = NULL;
+}
+
 int	checker(int ac, char **av)
 {
 	char	**str;

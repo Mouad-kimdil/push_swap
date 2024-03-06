@@ -6,7 +6,7 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 05:01:33 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/03/06 05:01:36 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/03/06 08:26:39 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,5 +96,6 @@ void	stack_add_bottom(t_list **stack, t_list *new);
 int		last_check_sort(t_list *stack);
 void	shift_stack(t_list **stack_a);
 int		get_lowest_index_position(t_list **stack);
+void	free_stack(t_list **stack);
 
 #endif

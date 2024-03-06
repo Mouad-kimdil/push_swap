@@ -6,11 +6,13 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 05:01:29 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/03/06 08:10:39 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/03/06 08:42:21 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+
 
 void	print_stack(t_list *stack, int state)
 {
@@ -59,9 +61,14 @@ void	assign_index(t_list *stack_a, int stack_size)
 			highest->idx = stack_size;
 	}
 }
+void	ft_leak(void)
+{
+	system("leaks push_swap");
+}
 
 int	main(int ac, char **av)
 {
+	atexit(ft_leak);
 	t_list	*stack_a;
 	t_list	*stack_b;
 	int		size;
@@ -76,6 +83,7 @@ int	main(int ac, char **av)
 		sort_three(&stack_a);
 	else if (lstsize(stack_a) > 3)
 		sort(&stack_a, &stack_b);
-	print_stack(stack_a, 0);
+	free_stack(&stack_a);
+	free_stack(&stack_b);
 	return (0);
 }
