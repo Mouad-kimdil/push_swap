@@ -1,10 +1,7 @@
-SRCS = push_swap.c push_swap_helper.c push_swap_err.c \
-		push_swap_is_double.c push_swap_lists.c split.c \
-		push_swap_init_stack.c push_swap_strings.c \
-		push_swap_instructions.c push_swap_instruction2.c \
-		push_swap_message.c push_swap_instructions3.c \
-		push_swap_sort.c push_swap_indexing.c push_swap_sort2.c\
-		push_swap_cheapest.c push_swap_do_move.c
+SRCS =  cheapest.c check_err.c do_move.c get_target.c init_stack.c \
+		is_double.c lists.c push_swap.c push.c utils.c strings.c \
+		reverse_rotate.c rotate.c shift_stack.c swap.c \
+		sort.c split.c 
 INC = push_swap.h
 NAME = push_swap
 CC = cc

@@ -6,7 +6,7 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 23:17:58 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/03/05 22:15:07 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/03/06 04:54:02 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,84 +31,51 @@ void	print_stack(t_list *stack, int state)
 	printf("\n");
 }
 
-void	print_cost(t_list *stack, int state)
+void	assign_index(t_list *stack_a, int stack_size)
 {
-	if (state == 0)
-		printf("cost_a: ");
-	else if (state == 1)
-		printf("cost_b: ");
-	if (state == 0)
+	t_list	*ptr;
+	t_list	*highest;
+	int		data;
+
+	while (--stack_size > 0)
 	{
-		while (stack)
+		ptr = stack_a;
+		data = INT_MIN;
+		highest = NULL;
+		while (ptr)
 		{
-			printf("%d ", stack->cost_a);
-			stack = stack->next;
+			if (ptr->data == INT_MIN && ptr->idx == 0)
+				ptr->idx = 1;
+			if (ptr->data > data && ptr->idx == 0)
+			{
+				data = ptr->data;
+				highest = ptr;
+				ptr = stack_a;
+			}
+			else
+				ptr = ptr->next;
 		}
+		if (highest != NULL)
+			highest->idx = stack_size;
 	}
-	else if (state == 1)
-	{
-		while (stack)
-		{
-			printf("%d ", stack->cost_b);
-			stack = stack->next;
-		}
-	}
-	printf("\n");
-}
-
-int	pre_final_sort(t_list *stack_a)
-{
-	while (stack_a && stack_a->next)
-	{
-		if (stack_a->data > stack_a->next->data)
-			return (0);
-		stack_a = stack_a->next;
-	}
-	return (1);
-}
-
-int	final_sort(t_list **stack_a)
-{
-	t_list	*curr;
-	int		max;
-	int		i;
-
-	max = find_max(*stack_a);
-	i = 0;
-	curr = *stack_a;
-	while (curr)
-	{
-		if (curr->data == max)
-			break ;
-		curr = curr->next;
-		i++;
-	}
-	if (i < lstsize(*stack_a))
-		return (1);
-	else
-		return (0);
 }
 
 int	main(int ac, char **av)
 {
 	t_list	*stack_a;
 	t_list	*stack_b;
+	int		size;
 
 	if (ac < 2 || !checker(ac, av))
 		return (0);
-	stack_a = NULL;
 	stack_b = NULL;
-	initialize_stack(&stack_a, av);
+	stack_a = initialize_stack(ac, av);
+	size = lstsize(stack_a);
+	assign_index(stack_a, size + 1);
 	if (lstsize(stack_a) == 3 || lstsize(stack_a) == 2)
 		sort_three(&stack_a);
-	if (lstsize(stack_a) > 5)
+	else if (lstsize(stack_a) > 5)
 		sort(&stack_a, &stack_b);
-	while (!pre_final_sort(stack_a))
-	{
-		if (final_sort(&stack_a) == 1)
-			ra(&stack_a);
-		else
-			rra(&stack_a);
-	}
+	print_stack(stack_a, 0);
 	return (0);
 }

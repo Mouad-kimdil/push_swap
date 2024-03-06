@@ -65,6 +65,11 @@ t_list	*lstnew(int num)
 	if (!ptr)
 		return (NULL);
 	ptr->data = num;
+	ptr->idx = 0;
+	ptr->pos = -1;
+	ptr->target_pos = -1;
+	ptr->cost_a = -1;
+	ptr->cost_b = -1;
 	ptr->next = NULL;
 	return (ptr);
 }

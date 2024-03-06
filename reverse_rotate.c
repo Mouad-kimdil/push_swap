@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_instructions3.c                          :+:      :+:    :+:   */
+/*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 20:45:48 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/03/02 22:09:29 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/03/06 04:54:39 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,6 @@ int	reverse_rotate(t_list **stack)
 	b_last->next = NULL;
 	last->next = curr;
 	*stack = last;
-	return (0);
-}
-
-int	rr(t_list **stack_a, t_list **stack_b)
-{
-	if (lstsize(*stack_a) < 2 || lstsize(*stack_b) < 2)
-		return (1);
-	if (rotate_stack(stack_a) || rotate_stack(stack_b))
-		return (1);
-	ft_putendl_fd("rr", 1);
 	return (0);
 }
 
