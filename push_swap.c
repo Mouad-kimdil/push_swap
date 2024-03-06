@@ -6,7 +6,7 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 05:01:29 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/03/06 05:01:32 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/03/06 08:10:39 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int	main(int ac, char **av)
 	assign_index(stack_a, size + 1);
 	if (lstsize(stack_a) == 3 || lstsize(stack_a) == 2)
 		sort_three(&stack_a);
-	else if (lstsize(stack_a) > 5)
+	else if (lstsize(stack_a) > 3)
 		sort(&stack_a, &stack_b);
 	print_stack(stack_a, 0);
 	return (0);
