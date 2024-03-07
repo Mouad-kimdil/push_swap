@@ -6,7 +6,7 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 15:09:14 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/03/07 19:28:20 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/03/07 19:38:59 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,23 +70,25 @@ int	do_ss(t_list **stack_a, t_list **stack_b)
 	return (0);
 }
 
-void	print_stack(t_list *stack, int state)
+int	parsing_bonus(int ac, char **av)
 {
-	if (state == 0)
-		printf("stack_a: ");
-	else if (state == 1)
-		printf("stack_b: ");
-	if (!stack)
+	char	**str;
+	int		i;
+
+	i = 1;
+	while (av[i])
 	{
-		printf("is empty\n");
-		return ;
+		if (!av[i][0])
+			return (ft_putendl_fd("Error", 2), 0);
+		str = ft_split(av[i], ' ');
+		if (!check_is_number(str))
+			return (free_arr(str), ft_putendl_fd("Error", 2), 0);
+		free_arr(str);
+		i++;
 	}
-	while (stack)
-	{
-		printf("%d ", stack->data);
-		stack = stack->next;
-	}
-	printf("\n");
+	if (!is_double(ac, av))
+		return (ft_putendl_fd("Error", 2), 0);
+	return (1);
 }
 
 int	main(int ac, char **av)

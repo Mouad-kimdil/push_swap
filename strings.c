@@ -6,7 +6,7 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 05:02:01 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/03/07 19:22:29 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/03/07 19:44:18 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,25 +89,4 @@ int	ft_strncmp(char *s1, char *s2, int len)
 		i++;
 	}
 	return (0);
-}
-
-int	parsing_bonus(int ac, char **av)
-{
-	char	**str;
-	int		i;
-
-	i = 1;
-	while (av[i])
-	{
-		if (!av[i][0])
-			return (ft_putendl_fd("Error", 2), 0);
-		str = ft_split(av[i], ' ');
-		if (!check_is_number(str))
-			return (free_arr(str), ft_putendl_fd("Error", 2), 0);
-		free_arr(str);
-		i++;
-	}
-	if (!is_double(ac, av))
-		return (ft_putendl_fd("Error", 2), 0);
-	return (1);
 }

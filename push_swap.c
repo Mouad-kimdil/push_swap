@@ -6,30 +6,11 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 05:01:29 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/03/07 18:52:11 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/03/07 19:33:07 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	print_stack(t_list *stack, int state)
-{
-	if (state == 0)
-		printf("stack_a: ");
-	else if (state == 1)
-		printf("stack_b: ");
-	if (!stack)
-	{
-		printf("is empty\n");
-		return ;
-	}
-	while (stack)
-	{
-		printf("%d ", stack->data);
-		stack = stack->next;
-	}
-	printf("\n");
-}
 
 void	assign_index(t_list *stack_a, int stack_size)
 {
