@@ -6,7 +6,7 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 15:09:14 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/03/07 19:38:59 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/03/07 20:22:33 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,8 @@ int	parsing_bonus(int ac, char **av)
 		if (!av[i][0])
 			return (ft_putendl_fd("Error", 2), 0);
 		str = ft_split(av[i], ' ');
+		if (!*str)
+			return (ft_putendl_fd("Error", 2), 0);
 		if (!check_is_number(str))
 			return (free_arr(str), ft_putendl_fd("Error", 2), 0);
 		free_arr(str);

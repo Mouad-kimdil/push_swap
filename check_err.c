@@ -51,6 +51,8 @@ int	checker(int ac, char **av)
 		if (!av[i][0])
 			return (ft_putendl_fd("Error", 2), 0);
 		str = ft_split(av[i], ' ');
+		if (!*str)
+			return (ft_putendl_fd("Error", 2), 0);
 		if (!check_is_number(str))
 			return (free_arr(str), ft_putendl_fd("Error", 2), 0);
 		free_arr(str);
