@@ -1,45 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   instruction_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/06 05:01:37 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/03/07 16:39:34 by mkimdil          ###   ########.fr       */
+/*   Created: 2024/03/07 16:19:01 by mkimdil           #+#    #+#             */
+/*   Updated: 2024/03/07 18:52:04 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	push_stack(t_list **stack_from, t_list **stack_to)
-{
-	t_list	*curr;
-
-	if (!stack_from || !*stack_from)
-		return (1);
-	curr = *stack_from;
-	*stack_from = (*stack_from)->next;
-	curr->next = NULL;
-	if (!*stack_to)
-		*stack_to = curr;
-	else
-		lstadd_front(stack_to, curr);
-	return (0);
-}
-
-int	pa(t_list **stack_b, t_list **stack_a)
+int	do_pa(t_list **stack_a, t_list **stack_b)
 {
 	if (push_stack(stack_b, stack_a))
 		return (1);
-	ft_putendl_fd("pa", 1);
 	return (0);
 }
 
-int	pb(t_list **stack_a, t_list **stack_b)
+int	do_pb(t_list **stack_a, t_list **stack_b)
 {
 	if (push_stack(stack_a, stack_b))
 		return (1);
-	ft_putendl_fd("pb", 1);
+	return (0);
+}
+
+int	do_rra(t_list **stack_a)
+{
+	if (reverse_rotate(stack_a))
+		return (1);
+	return (0);
+}
+
+int	do_rrb(t_list **stack_b)
+{
+	if (reverse_rotate(stack_b))
+		return (1);
+	return (0);
+}
+
+int	do_rrr(t_list **stack_a, t_list **stack_b)
+{
+	if (lstsize(*stack_a) < 2 || lstsize(*stack_b) < 2)
+		return (1);
+	if (reverse_rotate(stack_a) || reverse_rotate(stack_b))
+		return (1);
 	return (0);
 }

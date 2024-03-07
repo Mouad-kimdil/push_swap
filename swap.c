@@ -6,7 +6,7 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 05:02:05 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/03/06 05:02:07 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/03/07 16:43:52 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ int	swap_satck(t_list **stack)
 	int		data;
 	int		idx;
 
+	if (!stack || !*stack || !(*stack)->next)
+		return (1);
 	head = *stack;
 	next = head->next;
-	if (!head || !next)
-		return (1);
 	data = head->data;
 	idx = head->idx;
 	head->data = next->data;

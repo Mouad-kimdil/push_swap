@@ -6,7 +6,7 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 05:01:48 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/03/06 05:01:50 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/03/07 16:43:35 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	rotate_stack(t_list **stack)
 {
 	t_list	*curr;
 
-	if (lstsize(*stack) < 2)
+	if (!stack || !*stack || !(*stack)->next)
 		return (1);
 	curr = *stack;
 	*stack = (*stack)->next;

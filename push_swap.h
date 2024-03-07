@@ -6,7 +6,7 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 05:01:33 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/03/06 08:26:39 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/03/07 16:54:38 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@ typedef struct s_list
 	int				cost_b;
 	struct s_list	*next;
 }	t_list;
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 33
+# endif
 
 int		checker(int ac, char **av);
 int		my_is_digit(char *str);
@@ -58,8 +62,6 @@ char	*ft_strjoin(char *s1, char *s2);
 char	*ft_strdup(char *str);
 char	*join_args(char **av);
 void	ft_putendl_fd(char *s, int fd);
-void	ft_putstr_fd(char *s, int fd);
-void	ft_putchar_fd(char c, int fd);
 int		swap_satck(t_list **stack);
 int		push_stack(t_list **stack_from, t_list **stack_to);
 int		rotate_stack(t_list **stack);
@@ -97,5 +99,26 @@ int		last_check_sort(t_list *stack);
 void	shift_stack(t_list **stack_a);
 int		get_lowest_index_position(t_list **stack);
 void	free_stack(t_list **stack);
+char	*ft_strrchr(char *str, int c);
+char	*get_next_line(int fd);
+char	*ft_next_line(char *buffer);
+char	*ft_read_file(int fd, char *res);
+char	*ft_get_line(char *buffer);
+void	*ft_calloc(size_t count, size_t size);
+char	*ft_join(char *buffer, char *buf);
+int		ft_strncmp(char *s1, char *s2, int len);
+int		checker_bonus(t_list **stack_a, t_list **stack_b);
+void	do_move_bonus(t_list **stack_a, t_list **stack_b, char *tmp);
+int		do_pa(t_list **stack_a, t_list **stack_b);
+int		do_pb(t_list **stack_a, t_list **stack_b);
+int		do_rra(t_list **stack_a);
+int		do_rrb(t_list **stack_b);
+int		do_rrr(t_list **stack_a, t_list **stack_b);
+int		do_ra(t_list **stack_a);
+int		do_rb(t_list **stack_b);
+int		do_rr(t_list **stack_a, t_list **stack_b);
+int		do_sa(t_list **stack_a);
+int		do_sb(t_list **stack_b);
+int		do_ss(t_list **stack_a, t_list **stack_b);
 
 #endif
