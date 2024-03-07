@@ -6,7 +6,7 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 05:01:17 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/03/06 08:41:43 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/03/07 18:59:51 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ t_list	*initialize_stack(int ac, char **av)
 			if (stack_a == NULL)
 				stack_a = lstnew((int)nb);
 			else
-				stack_add_bottom(&stack_a, lstnew((int)nb));
+				lstadd_back(&stack_a, lstnew((int)nb));
 		}
 		free(tokens);
 	}

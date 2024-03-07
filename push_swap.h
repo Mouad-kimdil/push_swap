@@ -6,7 +6,7 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 05:01:33 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/03/07 16:54:38 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/03/07 19:25:01 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,6 @@ void	rotate_both(t_list **a, t_list **b, int *cost_a, int *cost_b);
 void	reverse_rotate_both(t_list **a, t_list **b, int *cost_a, int *cost_b);
 int		ft_abs(int n);
 void	assign_index(t_list *stack_a, int stack_size);
-t_list	*get_stack_bottom(t_list *stack);
-void	stack_add_bottom(t_list **stack, t_list *new);
 int		last_check_sort(t_list *stack);
 void	shift_stack(t_list **stack_a);
 int		get_lowest_index_position(t_list **stack);
@@ -120,5 +118,6 @@ int		do_rr(t_list **stack_a, t_list **stack_b);
 int		do_sa(t_list **stack_a);
 int		do_sb(t_list **stack_b);
 int		do_ss(t_list **stack_a, t_list **stack_b);
+int		parsing_bonus(int ac, char **av);
 
 #endif

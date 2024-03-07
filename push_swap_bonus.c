@@ -6,7 +6,7 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 15:09:14 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/03/07 18:41:49 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/03/07 19:28:20 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,11 @@ void	do_move_bonus(t_list **stack_a, t_list **stack_b, char *tmp)
 		do_sa(stack_a);
 	else if (ft_strncmp(tmp, "sb", 2) == 0)
 		do_sb(stack_b);
+	else
+	{
+		ft_putendl_fd("Error", 2);
+		exit(1);
+	}
 }
 
 int	checker_bonus(t_list **stack_a, t_list **stack_b)
@@ -49,7 +54,7 @@ int	checker_bonus(t_list **stack_a, t_list **stack_b)
 		free(tmp);
 	}
 	free(tmp);
-	if (last_check_sort(*stack_a))
+	if (last_check_sort(*stack_a) && !*stack_b)
 		ft_putendl_fd("OK", 1);
 	else
 		ft_putendl_fd("KO", 1);
@@ -89,9 +94,11 @@ int	main(int ac, char **av)
 	t_list	*stack_a;
 	t_list	*stack_b;
 
-	if (ac < 2 || !checker(ac, av))
+	if (ac < 2 || !parsing_bonus(ac, av))
 		return (0);
 	stack_b = NULL;
 	stack_a = initialize_stack(ac, av);
 	checker_bonus(&stack_a, &stack_b);
+	free_stack(&stack_a);
+	free_stack(&stack_b);
 }

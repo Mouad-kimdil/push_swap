@@ -6,7 +6,7 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 05:01:11 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/03/06 05:01:15 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/03/07 18:59:46 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,26 +71,4 @@ void	get_position(t_list **stack)
 		tmp = tmp->next;
 		i++;
 	}
-}
-
-t_list	*get_stack_bottom(t_list *stack)
-{
-	while (stack && stack->next != NULL)
-		stack = stack->next;
-	return (stack);
-}
-
-void	stack_add_bottom(t_list **stack, t_list *new)
-{
-	t_list	*tail;
-
-	if (!new)
-		return ;
-	if (!*stack)
-	{
-		*stack = new;
-		return ;
-	}
-	tail = get_stack_bottom(*stack);
-	tail->next = new;
 }

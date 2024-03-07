@@ -6,7 +6,7 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 05:01:51 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/03/06 05:01:54 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/03/07 19:13:18 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	last_check_sort(t_list *stack)
 {
-	while (stack->next != NULL)
+	while (stack && stack->next != NULL)
 	{
 		if (stack->data > stack->next->data)
 			return (0);
