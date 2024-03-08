@@ -6,7 +6,7 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 05:02:08 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/03/06 05:02:11 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/03/08 11:02:05 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ long	ft_atoi(char *str)
 	i = 0;
 	sign = 1;
 	result = 0;
+	if (ft_strlen(str) > 20)
+		return (0);
 	while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
 		i++;
 	if (str[i] == '-' || str[i] == '+')

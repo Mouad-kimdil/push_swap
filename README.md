@@ -85,3 +85,6 @@ Sorting 500 values: Rated from 1 to 5 points based on the number of actions:
 2 points for less than 10000
 
 1 point for less than 11500
+
+## BONUS PART
+
