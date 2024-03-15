@@ -6,7 +6,7 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 05:01:33 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/03/07 19:39:00 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/03/15 02:37:07 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,7 @@ int		rra(t_list **stack_a);
 int		rrb(t_list **stack_b);
 int		rrr(t_list **stack_a, t_list **stack_b);
 void	sort(t_list **stack_a, t_list **stack_b);
-void	push_all_save_three(t_list **stack_a, t_list **stack_b);
-void	print_stack(t_list *stack, int state);
+void	save_three(t_list **stack_a, t_list **stack_b);
 void	get_target_position(t_list **a, t_list **b);
 int		calculate_target(t_list **a, int b_idx, int target_idx, int target_pos);
 void	get_position(t_list **stack);
@@ -119,5 +118,8 @@ int		do_sa(t_list **stack_a);
 int		do_sb(t_list **stack_b);
 int		do_ss(t_list **stack_a, t_list **stack_b);
 int		parsing_bonus(int ac, char **av);
+int		process_string(char *str, int *ind, int *sign);
+int		ft_strcmp(char *s1, char *s2);
+void	do_init(t_list **stack_a, int nb);
 
 #endif

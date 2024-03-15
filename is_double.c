@@ -75,10 +75,14 @@ int	is_double(int ac, char **av)
 
 	i = 1;
 	arr = malloc(sizeof(int) * alloc_len(av) + 1);
+	if (!arr)
+		return (0);
 	idx = 0;
 	while (i < ac)
 	{
 		res = ft_split(av[i], ' ');
+		if (!res)
+			return (free(arr), 0);
 		fill_arr(res, arr, &idx);
 		free_arr(res);
 		i++;

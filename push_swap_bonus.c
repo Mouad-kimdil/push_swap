@@ -6,7 +6,7 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 15:09:14 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/03/07 20:22:33 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/03/15 02:21:50 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,25 @@
 
 void	do_move_bonus(t_list **stack_a, t_list **stack_b, char *tmp)
 {
-	if (ft_strncmp(tmp, "pa", 2) == 0)
+	if (tmp[1] != '\n' && ft_strncmp(tmp, "pa", ft_strlen(tmp) - 1) == 0)
 		do_pa(stack_a, stack_b);
-	else if (ft_strncmp(tmp, "pb", 2) == 0)
+	else if (tmp[1] != '\n' && ft_strncmp(tmp, "pb", ft_strlen(tmp) - 1) == 0)
 		do_pb(stack_a, stack_b);
-	else if (ft_strncmp(tmp, "rra", 3) == 0)
+	else if (tmp[1] != '\n' && ft_strncmp(tmp, "rra", ft_strlen(tmp) - 1) == 0)
 		do_rra(stack_a);
-	else if (ft_strncmp(tmp, "rrb", 3) == 0)
+	else if (tmp[1] != '\n' && ft_strncmp(tmp, "rrb", ft_strlen(tmp) - 1) == 0)
 		do_rrb(stack_b);
-	else if (ft_strncmp(tmp, "rrr", 3) == 0)
+	else if (tmp[1] != '\n' && ft_strncmp(tmp, "rrr", ft_strlen(tmp) - 1) == 0)
 		do_rrr(stack_a, stack_b);
-	else if (ft_strncmp(tmp, "ra", 2) == 0)
+	else if (tmp[1] != '\n' && ft_strncmp(tmp, "ra", ft_strlen(tmp) - 1) == 0)
 		do_ra(stack_a);
-	else if (ft_strncmp(tmp, "rb", 2) == 0)
+	else if (tmp[1] != '\n' && ft_strncmp(tmp, "rb", ft_strlen(tmp) - 1) == 0)
 		do_rb(stack_b);
-	else if (ft_strncmp(tmp, "rr", 2) == 0)
+	else if (tmp[1] != '\n' && ft_strncmp(tmp, "rr", ft_strlen(tmp) - 1) == 0)
 		do_rr(stack_a, stack_b);
-	else if (ft_strncmp(tmp, "sa", 2) == 0)
+	else if (tmp[1] != '\n' && ft_strncmp(tmp, "sa", ft_strlen(tmp) - 1) == 0)
 		do_sa(stack_a);
-	else if (ft_strncmp(tmp, "sb", 2) == 0)
+	else if (tmp[1] != '\n' && ft_strncmp(tmp, "sb", ft_strlen(tmp) - 1) == 0)
 		do_sb(stack_b);
 	else
 	{
@@ -81,8 +81,10 @@ int	parsing_bonus(int ac, char **av)
 		if (!av[i][0])
 			return (ft_putendl_fd("Error", 2), 0);
 		str = ft_split(av[i], ' ');
+		if (!str)
+			return (0);
 		if (!*str)
-			return (ft_putendl_fd("Error", 2), 0);
+			return (free(str), ft_putendl_fd("Error", 2), 0);
 		if (!check_is_number(str))
 			return (free_arr(str), ft_putendl_fd("Error", 2), 0);
 		free_arr(str);

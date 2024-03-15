@@ -1,6 +1,6 @@
 SRCS = cheapest.c check_err.c do_move.c get_target.c init_stack.c \
-	   is_double.c lists.c push_swap.c push.c utils.c strings.c \
-	   reverse_rotate.c rotate.c shift_stack.c swap.c sort.c split.c
+		is_double.c lists.c push_swap.c push.c utils.c strings.c \
+		reverse_rotate.c rotate.c shift_stack.c swap.c sort.c split.c
 SRCS_BONUS = check_err.c init_stack.c is_double.c lists.c \
 			push.c utils.c strings.c reverse_rotate.c rotate.c \
 			push_swap_bonus.c get_next_line_bonus.c swap.c \

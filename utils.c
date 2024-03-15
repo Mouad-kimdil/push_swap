@@ -6,7 +6,7 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 05:02:08 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/03/08 12:15:26 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/03/15 02:26:30 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,25 +38,49 @@ long	ft_atoi(char *str)
 	return (sign * result);
 }
 
-int	my_is_digit(char *str)
+int	process_string(char *str, int *ind, int *sign)
 {
-	int		i;
-	long	temp;
+	int	i;
 
 	i = 0;
 	while (str[i] == ' ')
 		i++;
 	if ((str[i] == '-' || str[i] == '+') && str[i + 1])
+	{
+		if (str[i] == '-')
+			*sign = -1;
 		i++;
+	}
+	while (str[i] == '0')
+		i++;
+	*ind = i;
+	return (i);
+}
+
+int	my_is_digit(char *str)
+{
+	int		ind;
+	int		sn;
+	long	temp;
+	int		i;
+
+	sn = 1;
+	i = process_string(str, &ind, &sn);
 	while (str[i])
 	{
 		if (!(str[i] >= '0' && str[i] <= '9'))
 			return (0);
 		i++;
 	}
-	temp = ft_atoi(str);
-	if (temp > 2147483647 || temp < -2147483648)
+	if (ft_strlen(str + ind) > 10)
 		return (0);
+	else if (ft_strlen(str + ind) == 10)
+	{
+		if (!((sn == 1 && ft_strcmp("2147483647", (str + ind)) >= 0)
+				|| (sn == -1 && ft_strcmp("2147483648", (str + ind)) >= 0)))
+			return (0);
+	}
+	temp = ft_atoi(str);
 	return (1);
 }
 
@@ -74,20 +98,6 @@ int	check_is_number(char **str)
 	return (1);
 }
 
-int	is_sorted(int *arr, int size)
-{
-	int	i;
-
-	i = 1;
-	while (i < size)
-	{
-		if (arr[i - 1] > arr[i])
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
 int	check_is_sorted(char **av, int size)
 {
 	int		*arr;
@@ -95,18 +105,18 @@ int	check_is_sorted(char **av, int size)
 	int		i;
 	int		j;
 
-	i = 0;
+	i = -1;
 	arr = malloc(sizeof(int) * size);
+	if (!arr)
+		return (0);
 	while (*av)
 	{
 		res = ft_split(*av, ' ');
-		j = 0;
-		while (res[j])
-		{
-			arr[i] = ft_atoi(res[j]);
-			j++;
-			i++;
-		}
+		if (!res)
+			return (free(arr), 0);
+		j = -1;
+		while (res[++j])
+			arr[++i] = ft_atoi(res[j]);
 		free_arr(res);
 		av++;
 	}
