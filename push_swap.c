@@ -41,17 +41,6 @@ void	assign_index(t_list *stack_a, int stack_size)
 	}
 }
 
-void print_stack(t_list	**stack)
-{
-	t_list	*ptr;
-
-	ptr = *stack;
-	while (ptr)
-	{
-		printf("%d ,", ptr->data);
-		ptr = ptr->next;
-	}
-}
 
 int	main(int ac, char **av)
 {
