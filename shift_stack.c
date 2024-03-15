@@ -6,7 +6,7 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 05:01:51 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/03/07 19:13:18 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/03/15 14:58:24 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	shift_stack(t_list **stack_a)
 	}
 	else
 	{
-		while (lowest_pos >= 0)
+		while (lowest_pos > 0)
 		{
 			ra(stack_a);
 			lowest_pos--;
