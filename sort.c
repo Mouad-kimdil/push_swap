@@ -6,7 +6,7 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 05:01:54 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/03/15 14:57:58 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/03/17 15:21:27 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,22 @@ void	save_three(t_list **stack_a, t_list **stack_b)
 {
 	int	stack_size;
 	int	pushed;
+	int	i;
 
 	stack_size = lstsize(*stack_a);
 	pushed = 0;
+	i = 0;
+	while (stack_size > 6 && i < stack_size && pushed < stack_size / 2)
+	{
+		if ((*stack_a)->idx <= stack_size / 2)
+		{
+			pb(stack_a, stack_b);
+			pushed++;
+		}
+		else
+			ra(stack_a);
+		i++;
+	}
 	while (stack_size - pushed > 3)
 	{
 		pb(stack_a, stack_b);

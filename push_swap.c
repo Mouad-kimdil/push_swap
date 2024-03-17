@@ -6,7 +6,7 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 05:01:29 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/03/15 14:58:49 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/03/15 15:18:48 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void	assign_index(t_list *stack_a, int stack_size)
 			highest->idx = stack_size;
 	}
 }
-
 
 int	main(int ac, char **av)
 {
