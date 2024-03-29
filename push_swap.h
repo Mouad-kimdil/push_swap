@@ -121,5 +121,6 @@ int		parsing_bonus(int ac, char **av);
 int		process_string(char *str, int *ind, int *sign);
 int		ft_strcmp(char *s1, char *s2);
 void	do_init(t_list **stack_a, int nb);
+t_list	*get_stack_before_bottom(t_list *stack);
 
 #endif

@@ -12,27 +12,27 @@
 
 #include "push_swap.h"
 
+t_list	*get_stack_before_bottom(t_list *stack)
+{
+	while (stack && stack->next && stack->next->next != NULL)
+		stack = stack->next;
+	return (stack);
+}
+
 int	reverse_rotate(t_list **stack)
 {
-	t_list	*b_last;
-	t_list	*last;
-	t_list	*curr;
+	t_list	*tmp;
+	t_list	*tail;
+	t_list	*before_tail;
 
 	if (!stack || !*stack || !(*stack)->next)
 		return (1);
-	b_last = NULL;
-	curr = *stack;
-	while (curr->next)
-	{
-		if (curr->next->next == NULL)
-			b_last = curr;
-		curr = curr->next;
-	}
-	curr = *stack;
-	last = lstlast(*stack);
-	b_last->next = NULL;
-	last->next = curr;
-	*stack = last;
+	tail = lstlast(*stack);
+	before_tail = get_stack_before_bottom(*stack);
+	tmp = *stack;
+	*stack = tail;
+	(*stack)->next = tmp;
+	before_tail->next = NULL;
 	return (0);
 }
 

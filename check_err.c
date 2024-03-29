@@ -49,19 +49,19 @@ int	checker(int ac, char **av)
 	while (av[i])
 	{
 		if (!av[i][0])
-			return (ft_putendl_fd("Error", 2), 0);
+			return (ft_putendl_fd("Error", 2), 1);
 		str = ft_split(av[i], ' ');
 		if (!str)
 			return (0);
 		if (!*str)
-			return (free(str), ft_putendl_fd("Error", 2), 0);
+			return (free(str), ft_putendl_fd("Error", 2), 1);
 		if (!check_is_number(str))
-			return (free_arr(str), ft_putendl_fd("Error", 2), 0);
+			return (free_arr(str), ft_putendl_fd("Error", 2), 1);
 		free_arr(str);
 		i++;
 	}
 	if (!is_double(ac, av))
-		return (ft_putendl_fd("Error", 2), 0);
+		return (ft_putendl_fd("Error", 2), 1);
 	if (!check_is_sorted(av + 1, alloc_len(av)))
 		return (0);
 	return (1);

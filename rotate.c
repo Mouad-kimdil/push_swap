@@ -14,14 +14,16 @@
 
 int	rotate_stack(t_list **stack)
 {
-	t_list	*curr;
+	t_list	*tmp;
+	t_list	*tail;
 
 	if (!stack || !*stack || !(*stack)->next)
 		return (1);
-	curr = *stack;
+	tmp = *stack;
 	*stack = (*stack)->next;
-	curr->next = NULL;
-	lstlast(*stack)->next = curr;
+	tail = lstlast(*stack);
+	tmp->next = NULL;
+	tail->next = tmp;
 	return (0);
 }
 

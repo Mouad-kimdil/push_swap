@@ -61,7 +61,6 @@ int	my_is_digit(char *str)
 {
 	int		ind;
 	int		sn;
-	long	temp;
 	int		i;
 
 	sn = 1;
@@ -80,7 +79,6 @@ int	my_is_digit(char *str)
 				|| (sn == -1 && ft_strcmp("2147483648", (str + ind)) >= 0)))
 			return (0);
 	}
-	temp = ft_atoi(str);
 	return (1);
 }
 

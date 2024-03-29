@@ -14,25 +14,25 @@
 
 void	do_move_bonus(t_list **stack_a, t_list **stack_b, char *tmp)
 {
-	if (tmp[1] != '\n' && ft_strncmp(tmp, "pa", ft_strlen(tmp) - 1) == 0)
+	if (ft_strncmp(tmp, "pa\n", 4) == 0)
 		do_pa(stack_a, stack_b);
-	else if (tmp[1] != '\n' && ft_strncmp(tmp, "pb", ft_strlen(tmp) - 1) == 0)
+	else if (ft_strncmp(tmp, "pb\n", 4) == 0)
 		do_pb(stack_a, stack_b);
-	else if (tmp[1] != '\n' && ft_strncmp(tmp, "rra", ft_strlen(tmp) - 1) == 0)
+	else if (ft_strncmp(tmp, "rra\n", 5)== 0)
 		do_rra(stack_a);
-	else if (tmp[1] != '\n' && ft_strncmp(tmp, "rrb", ft_strlen(tmp) - 1) == 0)
+	else if (ft_strncmp(tmp, "rrb\n", 5) == 0)
 		do_rrb(stack_b);
-	else if (tmp[1] != '\n' && ft_strncmp(tmp, "rrr", ft_strlen(tmp) - 1) == 0)
+	else if (ft_strncmp(tmp, "rrr\n", 5) == 0)
 		do_rrr(stack_a, stack_b);
-	else if (tmp[1] != '\n' && ft_strncmp(tmp, "ra", ft_strlen(tmp) - 1) == 0)
+	else if (ft_strncmp(tmp, "ra\n", 4) == 0)
 		do_ra(stack_a);
-	else if (tmp[1] != '\n' && ft_strncmp(tmp, "rb", ft_strlen(tmp) - 1) == 0)
+	else if (ft_strncmp(tmp, "rb\n", 4) == 0)
 		do_rb(stack_b);
-	else if (tmp[1] != '\n' && ft_strncmp(tmp, "rr", ft_strlen(tmp) - 1) == 0)
+	else if (ft_strncmp(tmp, "rr\n", 4) == 0)
 		do_rr(stack_a, stack_b);
-	else if (tmp[1] != '\n' && ft_strncmp(tmp, "sa", ft_strlen(tmp) - 1) == 0)
+	else if (ft_strncmp(tmp, "sa\n", 4) == 0)
 		do_sa(stack_a);
-	else if (tmp[1] != '\n' && ft_strncmp(tmp, "sb", ft_strlen(tmp) - 1) == 0)
+	else if (ft_strncmp(tmp, "sb\n", 4) == 0)
 		do_sb(stack_b);
 	else
 	{
@@ -54,7 +54,7 @@ int	checker_bonus(t_list **stack_a, t_list **stack_b)
 		free(tmp);
 	}
 	free(tmp);
-	if (last_check_sort(*stack_a) && !*stack_b)
+	if (last_check_sort(*stack_a) && lstsize(*stack_b) == 0)
 		ft_putendl_fd("OK", 1);
 	else
 		ft_putendl_fd("KO", 1);
